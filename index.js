@@ -17,6 +17,20 @@ app.get("/on", (req, res, next) => {
             console.log(`stderr: ${stderr}`);
             return;
         }
+
+
+        exec("echo 'on 0' | cec-client RPI -s -d 1", (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+        });
+
         console.log(`stdout: ${stdout}`);
     });
 
